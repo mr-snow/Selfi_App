@@ -1,52 +1,49 @@
-import { StyleSheet, Text, View, Image, useColorScheme } from 'react-native';
-import React from 'react';
+import { StyleSheet } from 'react-native';
+
 import { Link } from 'expo-router';
-import Logo from '../assets/image/favicon.png';
-import { Colors } from '../constants/Color';
+
+import ThemedView from '../components/ThemedView';
+import ThemedLogo from '../components/ThemedLogo';
+import Spacer from '../components/Spacer';
+import ThemedText from '../components/ThemedText';
 
 const Home = () => {
-  const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme] ?? Colors.light;
-
   return (
-    <View
-      style={[
-        styles.container,
-        { backgroundColor: theme.background, color: theme.text },
-      ]}
-    >
-      <Image source={Logo} style={styles.image} />
-      <Text style={[styles.title, { color: 'purple' }]}>The Number 1 </Text>
-      <Text style={{ fontStyle: 'italic', color: theme.text }}>
-        Reading List App2{' '}
-      </Text>
+    <ThemedView style={styles.container}>
+      <ThemedLogo style={styles.image} />
+
+      <ThemedText style={styles.title} title={true}>
+        Selfie
+      </ThemedText>
+
+      <Spacer alignItems="center" justifyContent="center" height={20}>
+        <ThemedText>Tak a Real Selfie </ThemedText>
+      </Spacer>
+
       <Link href="/about" style={styles.link}>
-        About
+        <ThemedText>About Us</ThemedText>
       </Link>
       <Link href={'/contact'} style={styles.link2}>
-        Contact
+        <ThemedText>Contact Us</ThemedText>
       </Link>
-    </View>
+    </ThemedView>
   );
 };
 export default Home;
-
 const styles = StyleSheet.create({
-  image: {
-    marginVertical: 20,
-  },
   container: {
     flex: 1,
-    backgroundColor: '#9ce13572',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
     height: '100%',
   },
+  image: {
+    marginVertical: 20,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
   },
   link: {
     fontStyle: 'italic',
@@ -61,7 +58,7 @@ const styles = StyleSheet.create({
     color: '#b91717',
     fontWeight: '600',
     marginTop: 20,
-    right: 70,
+    marginLeft: 150,
     position: 'absolute',
     bottom: 20,
   },

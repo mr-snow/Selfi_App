@@ -1,33 +1,34 @@
 import { View, Text, useColorScheme } from 'react-native';
-import React from 'react';
+
 import { StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
-import { Colors } from '../constants/Color';
+import ThemedView from '../components/ThemedView';
+import ThemedText from '../components/ThemedText';
+import ThemedCard from '../components/ThemedCard';
 
 const about = () => {
-  const colorScheme = useColorScheme();
-  const theme = Colors[colorScheme] ?? Colors.light;
   return (
-    <View
-      style={[
-        styles.container,
-        { backgroundColor: theme.background, color: theme.text },
-      ]}
-    >
-      <Text style={[styles.title, { color: theme.title }]}>about</Text>
-      <Link href="/" style={[styles.link, { color: theme.text }]}>
-        Go to Home
+    <ThemedView style={styles.container}>
+      <ThemedText title={true} style={styles.title}>
+        About
+      </ThemedText>
+      <ThemedCard>
+        <ThemedText>
+          Selfi is a cutting-edge mobile application designed to enhance your
+          selfie-taking experience. With advanced features and user-friendly
+          interface, Selfi allows you to capture stunning selfies effortlessly.
+        </ThemedText>
+      </ThemedCard>
+      <Link href="/">
+        <ThemedText style={styles.link}>Home</ThemedText>
       </Link>
-    </View>
+    </ThemedView>
   );
 };
 
 export default about;
 
 const styles = StyleSheet.create({
-  image: {
-    marginVertical: 20,
-  },
   container: {
     flex: 1,
     backgroundColor: '#9ce13572',
@@ -41,10 +42,8 @@ const styles = StyleSheet.create({
     color: '#7c1e0d',
   },
   link: {
-    fontStyle: 'italic',
-    color: 'blue',
+    textDecorationLine: 'underline',
+    color: '#f4e000',
     marginTop: 20,
-    position: 'absolute',
-    bottom: 20,
   },
 });

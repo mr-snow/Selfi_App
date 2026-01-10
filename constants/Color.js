@@ -5,17 +5,14 @@ export const Colors = {
     background: '#2c1d9b',
     text: '#d4d4d4',
     navBackground: '#0a0a0d',
-    title: '#fff',
+    title: '#63edff',
+    uiBackground: '#2000f188',
   },
   light: {
     background: '#9ce13572',
     text: '#2e2d37',
-    title: '#201e2b',
-    navBackground: '#e8e7ef',
+    title: '#7d034e',
+    navBackground: '#edeaea',
+    uiBackground: '#10d3c952',
   },
 };
-
-
-
-
-
