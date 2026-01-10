@@ -2,9 +2,9 @@ import { View, Text, useColorScheme } from 'react-native';
 
 import { StyleSheet } from 'react-native';
 import { Link } from 'expo-router';
-import ThemedView from '../components/ThemedView';
-import ThemedText from '../components/ThemedText';
-import ThemedCard from '../components/ThemedCard';
+import ThemedView from '../../components/ThemedView';
+import ThemedText from '../../components/ThemedText';
+import ThemedCard from '../../components/ThemedCard';
 
 const about = () => {
   return (

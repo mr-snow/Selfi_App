@@ -16,15 +16,15 @@ const Home = () => {
         Selfie
       </ThemedText>
 
-      <Spacer alignItems="center" justifyContent="center" height={20}>
+      <Spacer alignItems="center" justifyContent="center" height={30}>
         <ThemedText>Tak a Real Selfie </ThemedText>
       </Spacer>
-
-      <Link href="/about" style={styles.link}>
-        <ThemedText>About Us</ThemedText>
+      <Spacer height={20} />
+      <Link href="/Login" style={styles.link}>
+        <ThemedText>Login</ThemedText>
       </Link>
-      <Link href={'/contact'} style={styles.link2}>
-        <ThemedText>Contact Us</ThemedText>
+      <Link href={'/Register'} style={styles.link}>
+        <ThemedText>Register</ThemedText>
       </Link>
     </ThemedView>
   );
@@ -46,20 +46,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   link: {
-    fontStyle: 'italic',
-    color: '#b91717',
-    marginTop: 20,
-    position: 'absolute',
+    color: '#f80505',
+    marginTop: 10,
+    textDecorationLine: 'underline',
     bottom: 20,
     fontWeight: '600',
-  },
-  link2: {
-    fontStyle: 'italic',
-    color: '#b91717',
-    fontWeight: '600',
-    marginTop: 20,
-    marginLeft: 150,
-    position: 'absolute',
-    bottom: 20,
   },
 });

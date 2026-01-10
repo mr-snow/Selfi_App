@@ -6,7 +6,7 @@ export const Colors = {
     text: '#d4d4d4',
     navBackground: '#0a0a0d',
     title: '#63edff',
-    uiBackground: '#2000f188',
+    uiBackground: '#2000f170',
   },
   light: {
     background: '#9ce13572',
