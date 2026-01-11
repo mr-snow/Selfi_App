@@ -6,7 +6,7 @@ import ThemedButton from '../../components/ThemedButton';
 
 const Create = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={styles.container} safe={true}>
       <ThemedText
         title="true"
         style={{
@@ -14,8 +14,6 @@ const Create = () => {
           fontSize: 24,
           marginVertical: 10,
           marginLeft: 20,
-          marginTop:40,
-        
         }}
       >
         Add Book

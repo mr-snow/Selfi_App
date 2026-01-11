@@ -9,7 +9,7 @@ import ThemedText from '../components/ThemedText';
 
 const Home = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={styles.container} safe={true}>
       <ThemedLogo style={styles.image} />
 
       <ThemedText style={styles.title} title={true}>

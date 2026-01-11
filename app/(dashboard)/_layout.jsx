@@ -13,7 +13,10 @@ const DashboardLayout = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: theme.navBackground, paddingTop: 5, height: 60, marginBottom: 0,
+          backgroundColor: theme.navBackground,
+          paddingTop: 5,
+          height: 60,
+          marginBottom: 0,
         },
         tabBarActiveTintColor: theme.iconColorFocused,
         tabBarInactiveTintColor: theme.iconColor,

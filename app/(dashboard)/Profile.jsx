@@ -6,15 +6,12 @@ import ThemedButton from '../../components/ThemedButton';
 
 const Profile = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView safe={true} style={styles.container}>
       <ThemedText
         title="true"
         style={{
-          fontWeight: 'bold',
-          fontSize: 24,
-          marginVertical: 10,
-          marginTop: 40,
-          marginLeft: 20,
+          fontWeight: 'bold', fontSize: 24,
+          marginVertical: 10,  marginLeft: 20,
         }}
       >
         Profile

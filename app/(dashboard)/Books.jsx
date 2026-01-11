@@ -6,11 +6,14 @@ import ThemedButton from '../../components/ThemedButton';
 
 const Books = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={styles.container} safe={true}>
       <ThemedText
         title="true"
         style={{
-          fontWeight: 'bold',   fontSize: 24,  marginVertical: 10, marginLeft: 20,marginTop:40,
+          fontWeight: 'bold',
+          fontSize: 24,
+          marginVertical: 10,
+          marginLeft: 20,
         }}
       >
         Read Books
