@@ -20,8 +20,8 @@ const Home = () => {
         <ThemedText>Tak a Real Selfie </ThemedText>
       </Spacer>
       <Spacer height={20} />
-      <Link href="/Login" style={styles.link}>
-        <ThemedText>Login</ThemedText>
+      <Link href="/Books" style={styles.link}>
+        <ThemedText>Books</ThemedText>
       </Link>
       <Link href={'/Register'} style={styles.link}>
         <ThemedText>Register</ThemedText>

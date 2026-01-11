@@ -7,6 +7,8 @@ export const Colors = {
     navBackground: '#0a0a0d',
     title: '#63edff',
     uiBackground: '#2000f170',
+    iconColor: '#9591a5',
+    iconColorFocused: '#fff',
   },
   light: {
     background: '#9ce13572',
@@ -14,5 +16,7 @@ export const Colors = {
     title: '#7d034e',
     navBackground: '#edeaea',
     uiBackground: '#51faf152',
+    iconColor: '#363636',
+    iconColorFocused: '#b20000',
   },
 };
