@@ -1,5 +1,5 @@
 export const Colors = {
-  primary: '#158c76',
+  primary: '#08a8fe',
   secondary: '#9ce135',
   dark: {
     background: '#2c1d9b',
@@ -13,6 +13,6 @@ export const Colors = {
     text: '#2e2d37',
     title: '#7d034e',
     navBackground: '#edeaea',
-    uiBackground: '#10d3c952',
+    uiBackground: '#51faf152',
   },
 };

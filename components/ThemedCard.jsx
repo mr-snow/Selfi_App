@@ -22,7 +22,10 @@ const ThemedCard = ({ style, ...props }) => {
 export default ThemedCard;
 
 const styles = StyleSheet.create({
-  card: { padding: 20, borderRadius: 2 },
+  card: {
+    padding: 20,
+    borderRadius: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
-
-

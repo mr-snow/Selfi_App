@@ -4,14 +4,23 @@ import ThemedText from '../../components/ThemedText';
 import Spacer from '../../components/Spacer';
 import { Link } from 'expo-router';
 import ThemedCard from '../../components/ThemedCard';
+import ThemedButton from '../../components/ThemedButton';
 
 const Register = () => {
+  const handlePress = () => {
+    console.log('Register button pressed');
+  };
   return (
     <ThemedView style={styles.container}>
       <ThemedText title="true" style={styles.title}>
         Register
       </ThemedText>
+
       <ThemedCard>
+        <ThemedButton onPress={handlePress}>
+          <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>Register</Text>
+        </ThemedButton>
+
         <ThemedText margin={10}>This is the Register card content.</ThemedText>
       </ThemedCard>
       <Spacer height={100} />
