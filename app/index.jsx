@@ -23,8 +23,8 @@ const Home = () => {
       <Link href="/Books" style={styles.link}>
         <ThemedText>Books</ThemedText>
       </Link>
-      <Link href={'/Register'} style={styles.link}>
-        <ThemedText>Register</ThemedText>
+      <Link href={'/Login'} style={styles.link}>
+        <ThemedText>Login</ThemedText>
       </Link>
     </ThemedView>
   );

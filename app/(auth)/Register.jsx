@@ -1,33 +1,65 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+} from 'react-native';
+
+import { Link } from 'expo-router';
+
+import ThemedCard from '../../components/ThemedCard';
+import ThemedButton from '../../components/ThemedButton';
+import ThemedInput from '../../components/ThemedInput';
 import ThemedView from '../../components/ThemedView';
 import ThemedText from '../../components/ThemedText';
 import Spacer from '../../components/Spacer';
-import { Link } from 'expo-router';
-import ThemedCard from '../../components/ThemedCard';
-import ThemedButton from '../../components/ThemedButton';
+
+import { useState } from 'react';
 
 const Register = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const handlePress = () => {
-    console.log('Register button pressed');
+    console.log('Register button pressed', email, password);
   };
   return (
-    <ThemedView style={styles.container}>
-      <ThemedText title="true" style={styles.title}>
-        Register
-      </ThemedText>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ThemedView style={styles.container}>
+        <ThemedText title="true" style={styles.title}>
+          Signup
+        </ThemedText>
 
-      <ThemedCard>
-        <ThemedButton onPress={handlePress}>
-          <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>Register</Text>
-        </ThemedButton>
+        <ThemedCard style={{ width: '90%', padding: 20 }}>
+          <ThemedInput
+            placeholder="Enter your email"
+            style={{ width: '80%', padding: 12 }}
+            keyboardType="email-address"
+            value={email}
+            onChangeText={setEmail}
+          />
 
-        <ThemedText margin={10}>This is the Register card content.</ThemedText>
-      </ThemedCard>
-      <Spacer height={100} />
-      <Link href="/Login">
-        <ThemedText>Login </ThemedText>
-      </Link>
-    </ThemedView>
+          <ThemedInput
+            placeholder="Enter your password"
+            style={{ width: '80%', padding: 12 }}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={true}
+          />
+
+          <Spacer height={10} />
+
+          <ThemedButton onPress={handlePress}>
+            <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>Signup</Text>
+          </ThemedButton>
+        </ThemedCard>
+
+        <Spacer height={100} />
+        <Link href="/Login">
+          <ThemedText>do you have an account? Login . </ThemedText>
+        </Link>
+      </ThemedView>
+    </TouchableWithoutFeedback>
   );
 };
 
