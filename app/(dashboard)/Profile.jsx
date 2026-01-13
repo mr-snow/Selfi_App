@@ -3,15 +3,29 @@ import ThemedView from '../../components/ThemedView';
 import ThemedText from '../../components/ThemedText';
 import ThemedCard from '../../components/ThemedCard';
 import ThemedButton from '../../components/ThemedButton';
+import { useUser } from '../../hooks/useUser';
 
 const Profile = () => {
+  const { logout } = useUser();
+
+  const handlePress = async () => {
+    try {
+      await logout();
+      console.log('successfull logout');
+    } catch (error) {
+      console.log('logout error :', error.message);
+    }
+  };
+
   return (
     <ThemedView safe={true} style={styles.container}>
       <ThemedText
         title="true"
         style={{
-          fontWeight: 'bold', fontSize: 24,
-          marginVertical: 10,  marginLeft: 20,
+          fontWeight: 'bold',
+          fontSize: 24,
+          marginVertical: 10,
+          marginLeft: 20,
         }}
       >
         Profile
@@ -24,6 +38,10 @@ const Profile = () => {
           <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>
             Read Books
           </Text>
+        </ThemedButton>
+
+        <ThemedButton onPress={handlePress}>
+          <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>Logout</Text>
         </ThemedButton>
       </ThemedCard>
     </ThemedView>

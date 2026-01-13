@@ -16,20 +16,27 @@ import Spacer from '../../components/Spacer';
 
 import { useState } from 'react';
 
+import { useUser } from '../../hooks/useUser';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { register } = useUser();
 
-  const handlePress = () => {
-    console.log('Register button pressed', email, password);
+  const handlePress = async () => {
+    try {
+      await register(email, password);
+      console.log('successful register ');
+    } catch (error) {
+      console.log('register error', error.message);
+    }
   };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
         <ThemedText title="true" style={styles.title}>
           Signup
         </ThemedText>
-
         <ThemedCard style={{ width: '90%', padding: 20 }}>
           <ThemedInput
             placeholder="Enter your email"
@@ -38,7 +45,6 @@ const Register = () => {
             value={email}
             onChangeText={setEmail}
           />
-
           <ThemedInput
             placeholder="Enter your password"
             style={{ width: '80%', padding: 12 }}
@@ -46,9 +52,7 @@ const Register = () => {
             onChangeText={setPassword}
             secureTextEntry={true}
           />
-
           <Spacer height={10} />
-
           <ThemedButton onPress={handlePress}>
             <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>Signup</Text>
           </ThemedButton>

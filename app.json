@@ -1,8 +1,8 @@
 {
   "expo": {
-    "schema": "selfi_app",
-    "name": "selfi_app",
-    "slug": "selfi_app",
+    "schema": "selfie_world",
+    "name": "selfie_world",
+    "slug": "selfie_world",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

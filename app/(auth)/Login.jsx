@@ -1,4 +1,6 @@
-import {Keyboard, StyleSheet,
+import {
+  Keyboard,
+  StyleSheet,
   Text,
   TouchableWithoutFeedback,
   View,
@@ -12,12 +14,21 @@ import ThemedCard from '../../components/ThemedCard';
 import ThemedButton from '../../components/ThemedButton';
 import ThemedInput from '../../components/ThemedInput';
 import { useState } from 'react';
+import { useUser } from '../../hooks/useUser';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handlePress = () => {
-    console.log('Login button pressed', email, password);
+
+  const { login } = useUser();
+
+  const handlePress = async () => {
+    try {
+      await login(email, password);
+      console.log('successfull login');
+    } catch (error) {
+      console.log('login error', error.message);
+    }
   };
 
   return (
