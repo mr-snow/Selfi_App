@@ -7,6 +7,8 @@ import { useUser } from '../../hooks/useUser';
 import Toast from 'react-native-toast-message';
 import { toastConfig } from '../../components/customComponents';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '../../constants/Color';
 
 const Profile = () => {
   const colorScheme = useColorScheme();
@@ -59,8 +61,18 @@ const Profile = () => {
           </Text>
         </ThemedButton>
 
-        <ThemedButton onPress={handlePress}>
-          <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>Logout</Text>
+        <ThemedButton
+          onPress={handlePress}
+          style={{
+            backgroundColor: Colors.warning,
+            position: 'absolute',
+            top: 5,
+            right: 4,
+          }}
+        >
+          <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>
+            <Ionicons name="log-out-outline" size={20} />
+          </Text>
         </ThemedButton>
       </ThemedCard>
     </ThemedView>
