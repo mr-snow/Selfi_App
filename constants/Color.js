@@ -11,6 +11,10 @@ export const Colors = {
     iconColorFocused: '#fff',
     inputBgColor: '#131313bd',
     inputTextColor: '#ffffff',
+    successToastBg: '#02ac02',
+    errorToastBg: '#a80000',
+    successToastText: '#ebebeb',
+    errorToastText: '#f3f3f3',
   },
   light: {
     background: '#9ce13572',
@@ -22,5 +26,9 @@ export const Colors = {
     iconColorFocused: '#0090d3',
     inputBgColor: '#ffffff',
     inputTextColor: '#000000',
+    successToastBg: '#009700',
+    errorToastBg: '#a80000',
+    successToastText: '#f3f3f3',
+    errorToastText: '#f3f3f3',
   },
 };

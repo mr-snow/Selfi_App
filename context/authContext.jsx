@@ -20,6 +20,7 @@ export const UserContextProvider = ({ children }) => {
       console.log('Account : ', response);
     } catch (error) {
       console.log('auth Context error :', error.message);
+      throw error;
     }
   }
 
@@ -29,6 +30,7 @@ export const UserContextProvider = ({ children }) => {
       await login(email, password);
     } catch (error) {
       console.log('auth Context error :', error.message);
+      throw error;
     }
   }
 
@@ -39,6 +41,7 @@ export const UserContextProvider = ({ children }) => {
       setUser(null);
     } catch (error) {
       console.log('auth Context error :', error.message);
+      throw error;
     }
   }
 
@@ -48,4 +51,3 @@ export const UserContextProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
-

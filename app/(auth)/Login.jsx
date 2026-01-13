@@ -3,31 +3,58 @@ import {
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
+  useColorScheme,
   View,
 } from 'react-native';
 import ThemedView from '../../components/ThemedView';
 import ThemedText from '../../components/ThemedText';
 import Spacer from '../../components/Spacer';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 
 import ThemedCard from '../../components/ThemedCard';
 import ThemedButton from '../../components/ThemedButton';
 import ThemedInput from '../../components/ThemedInput';
 import { useState } from 'react';
 import { useUser } from '../../hooks/useUser';
+import Toast from 'react-native-toast-message';
+import { toastConfig } from '../../components/customComponents';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const colorScheme = useColorScheme();
 
   const { login } = useUser();
 
+  const router = useRouter();
+
   const handlePress = async () => {
+    if (!email || !password) {
+      Toast.show({
+        type: 'error',
+        text1: 'Email and password are required',
+      });
+      return;
+    }
     try {
-      await login(email, password);
-      console.log('successfull login');
+      const result = await login(email, password);
+      Toast.show({
+        type: 'success',
+        text1: 'Login successful!',
+        visibilityTime: 2000,
+      });
+      setEmail('');
+      setPassword('');
+      setTimeout(() => {
+        router.push('/Profile');
+      }, 3000);
     } catch (error) {
-      console.log('login error', error.message);
+      console.error('Login error:', error);
+      Toast.show({
+        type: 'error',
+        text1: 'Login failed',
+        text2: error?.message || 'Something went wrong',
+      });
     }
   };
 
@@ -37,6 +64,13 @@ const Login = () => {
         <ThemedText title="true" style={styles.title}>
           Login
         </ThemedText>
+
+        <Toast
+          position="top"
+          style={styles.ToastStyle}
+          config={toastConfig(colorScheme)}
+        />
+
         <ThemedCard style={{ width: '90%', padding: 20, borderRadius: 10 }}>
           <ThemedInput
             placeholder="Enter your email"

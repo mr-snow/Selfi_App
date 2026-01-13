@@ -3,9 +3,11 @@ import {
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
+  useColorScheme,
 } from 'react-native';
+import Toast from 'react-native-toast-message';
 
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 
 import ThemedCard from '../../components/ThemedCard';
 import ThemedButton from '../../components/ThemedButton';
@@ -17,17 +19,42 @@ import Spacer from '../../components/Spacer';
 import { useState } from 'react';
 
 import { useUser } from '../../hooks/useUser';
+import { toastConfig } from '../../components/customComponents';
 const Register = () => {
+  const colorScheme = useColorScheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { register } = useUser();
+  const router = useRouter();
 
   const handlePress = async () => {
+    if (!email || !password) {
+      Toast.show({
+        type: 'error',
+        text1: 'Email and password are required',
+      });
+      return;
+    }
     try {
-      await register(email, password);
-      console.log('successful register ');
+      const result = await register(email, password);
+      Toast.show({
+        type: 'success',
+        text1: 'Registration successful!',
+        visibilityTime: 2000,
+      });
+      setEmail('');
+      setPassword('');
+      setTimeout(() => {
+        router.push('/Profile');
+      }, 3000);
     } catch (error) {
-      console.log('register error', error.message);
+      console.error('Registration error:', error);
+
+      Toast.show({
+        type: 'error',
+        text1: 'Registration failed',
+        text2: error?.message || 'Something went wrong',
+      });
     }
   };
 
@@ -37,6 +64,11 @@ const Register = () => {
         <ThemedText title="true" style={styles.title}>
           Signup
         </ThemedText>
+        <Toast
+          position="top"
+          style={styles.ToastStyle}
+          config={toastConfig(colorScheme)}
+        />
         <ThemedCard style={{ width: '90%', padding: 20 }}>
           <ThemedInput
             placeholder="Enter your email"
@@ -79,5 +111,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginVertical: 10,
+  },
+  ToastStyle: {
+    backgroundColor: 'green',
+    color: 'red',
+    height: '20px',
   },
 });

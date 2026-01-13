@@ -1,19 +1,36 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 import ThemedView from '../../components/ThemedView';
 import ThemedText from '../../components/ThemedText';
 import ThemedCard from '../../components/ThemedCard';
 import ThemedButton from '../../components/ThemedButton';
 import { useUser } from '../../hooks/useUser';
+import Toast from 'react-native-toast-message';
+import { toastConfig } from '../../components/customComponents';
+import { useRouter } from 'expo-router';
 
 const Profile = () => {
+  const colorScheme = useColorScheme();
   const { logout } = useUser();
+  const router = useRouter();
 
   const handlePress = async () => {
     try {
       await logout();
-      console.log('successfull logout');
+      Toast.show({
+        type: 'success',
+        text1: 'User Logout',
+        visibilityTime: 2000,
+      });
+      setTimeout(() => {
+        router.push('/');
+      }, 3000);
     } catch (error) {
-      console.log('logout error :', error.message);
+      console.error('Logout error:', error);
+      Toast.show({
+        type: 'error',
+        text1: 'Logout failed',
+        text2: error?.message || 'Something went wrong',
+      });
     }
   };
 
@@ -30,6 +47,8 @@ const Profile = () => {
       >
         Profile
       </ThemedText>
+
+      <Toast position="top" config={toastConfig(colorScheme)} />
 
       <ThemedCard>
         <ThemedText margin={10}>Email </ThemedText>
