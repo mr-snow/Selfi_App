@@ -58,8 +58,15 @@ export const BookContextProvider = ({ children }) => {
     }
   }
 
-  async function getBookId() {
+  async function getBookById(id) {
+    if (!id) return null;
     try {
+      const response = await databases.getDocument(
+        DatabaseId,
+        CollectionID,
+        id
+      );
+      return response;
     } catch (error) {
       console.log('book context error', error.message);
     }
@@ -94,7 +101,7 @@ export const BookContextProvider = ({ children }) => {
 
   return (
     <BookContext.Provider
-      value={{ books, getBooks, getBookId, createBook, deleteBook }}
+      value={{ books, getBooks, getBookById, createBook, deleteBook }}
     >
       {children}
     </BookContext.Provider>
