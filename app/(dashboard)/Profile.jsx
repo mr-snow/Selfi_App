@@ -12,7 +12,7 @@ import { Colors } from '../../constants/Color';
 
 const Profile = () => {
   const colorScheme = useColorScheme();
-  const { logout } = useUser();
+  const { logout, user, authChecked } = useUser();
   const router = useRouter();
 
   const handlePress = async () => {
@@ -52,8 +52,10 @@ const Profile = () => {
 
       <Toast position="top" config={toastConfig(colorScheme)} />
 
-      <ThemedCard>
-        <ThemedText margin={10}>Email </ThemedText>
+      <ThemedCard style={{ flex: 0 }}>
+        <ThemedText margin={10} style={{ fontSize: 14 }}>
+          {user?.email ? user.email : <ThemedText>Please Login !</ThemedText>}
+        </ThemedText>
 
         <ThemedButton>
           <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>

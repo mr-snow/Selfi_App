@@ -1,13 +1,13 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { UserContextProvider } from '../../context/authContext';
+import GusetOnly from '../../components/auth/GusetOnly';
 
 const RootLayout = () => {
   return (
-    <UserContextProvider>
+    <GusetOnly>
       <StatusBar value="auto" />
       <Stack screenOptions={{ headerShown: false, animation: 'none' }}></Stack>
-    </UserContextProvider>
+    </GusetOnly>
   );
 };
 

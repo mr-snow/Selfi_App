@@ -23,3 +23,4 @@ export const toastConfig = colorScheme => {
     ),
   };
 };
+

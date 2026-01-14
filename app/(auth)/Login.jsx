@@ -16,6 +16,7 @@ import ThemedButton from '../../components/ThemedButton';
 import ThemedInput from '../../components/ThemedInput';
 import { useState } from 'react';
 import { useUser } from '../../hooks/useUser';
+
 import Toast from 'react-native-toast-message';
 import { toastConfig } from '../../components/customComponents';
 
@@ -46,7 +47,7 @@ const Login = () => {
       setEmail('');
       setPassword('');
       setTimeout(() => {
-        router.push('/Profile');
+        router.replace('/Books');
       }, 3000);
     } catch (error) {
       console.error('Login error:', error);
@@ -91,6 +92,7 @@ const Login = () => {
             <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>Login</Text>
           </ThemedButton>
         </ThemedCard>
+
         <Spacer height={100} />
         <Link href="/Register">
           <ThemedText>Please Register First , Signup </ThemedText>
