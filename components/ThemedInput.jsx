@@ -19,8 +19,6 @@ const ThemedInput = ({ style, ...props }) => {
     setIsFocused(false);
   };
 
-  
-
   return (
     <TextInput
       onFocus={handleFocus}

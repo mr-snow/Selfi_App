@@ -17,3 +17,4 @@ const ThemedLoader = () => {
 };
 
 export default ThemedLoader;
+

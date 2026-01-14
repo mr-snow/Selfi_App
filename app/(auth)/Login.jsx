@@ -41,12 +41,13 @@ const Login = () => {
       Toast.show({
         type: 'success',
         text1: 'Login successful!',
+        visibilityTime: 1000,
       });
       setEmail('');
       setPassword('');
       setTimeout(() => {
         router.replace('/Books');
-      }, 3000);
+      }, 2000);
     } catch (error) {
       console.error('Login error:', error);
       Toast.show({
@@ -63,8 +64,6 @@ const Login = () => {
         <ThemedText title="true" style={styles.title}>
           Login
         </ThemedText>
-
-       
 
         <ThemedCard style={{ width: '90%', padding: 20, borderRadius: 10 }}>
           <ThemedInput

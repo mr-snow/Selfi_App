@@ -20,11 +20,11 @@ const Profile = () => {
       Toast.show({
         type: 'success',
         text1: 'User Logout',
-        visibilityTime: 2000,
+        visibilityTime: 1000,
       });
       setTimeout(() => {
-        router.push('/');
-      }, 3000);
+        router.replace('/');
+      }, 2000);
     } catch (error) {
       console.error('Logout error:', error);
       Toast.show({

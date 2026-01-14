@@ -39,13 +39,13 @@ const Register = () => {
       Toast.show({
         type: 'success',
         text1: 'Registration successful!',
-        visibilityTime: 2000,
+        visibilityTime: 1000,
       });
       setEmail('');
       setPassword('');
       setTimeout(() => {
         router.push('/Profile');
-      }, 3000);
+      }, 2000);
     } catch (error) {
       console.error('Registration error:', error);
 
