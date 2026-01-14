@@ -65,7 +65,7 @@ const Login = () => {
           Login
         </ThemedText>
 
-        <ThemedCard style={{ width: '90%', padding: 20, borderRadius: 10 }}>
+        <ThemedCard style={{ width: '90%', padding: 20, borderRadius: 10 ,alignItems:'center'}}>
           <ThemedInput
             placeholder="Enter your email"
             style={{ width: '80%', padding: 12 }}

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { databases } from '../appwrite/client';
+import { databases, client } from '../appwrite/client';
 import { Permission, Role, ID, Query } from 'react-native-appwrite';
 import { useUser } from '../hooks/useUser';
 const DatabaseId = '69677bb8000a49cfdff2';
@@ -40,13 +40,6 @@ export const BookContextProvider = ({ children }) => {
   }
 
   async function getBooks() {
-    try {
-    } catch (error) {
-      console.log('book context error', error.message);
-    }
-  }
-
-  async function getBooks() {
     if (!authChecked) {
       console.log('Auth still checking');
       return;
@@ -79,12 +72,25 @@ export const BookContextProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    let unSubscribe;
+    const channel = `databases.${DatabaseId}.collections.${CollectionID}.documents`;
+
     if (user) {
       getBooks();
+      unSubscribe = client.subscribe(channel, response => {
+        const { payload, events } = response;
+        if (events[0].includes('create')) {
+          setBooks(prevBook => [...prevBook, payload]);
+        }
+      });
     } else {
       setBooks([]);
     }
-  }, [user, books]);
+
+    return () => {
+      if (unSubscribe) unSubscribe();
+    };
+  }, [user]);
 
   return (
     <BookContext.Provider

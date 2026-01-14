@@ -64,7 +64,7 @@ const Register = () => {
           Signup
         </ThemedText>
 
-        <ThemedCard style={{ width: '90%', padding: 20 }}>
+        <ThemedCard style={{ width: '90%', padding: 20, alignItems: 'center' }}>
           <ThemedInput
             placeholder="Enter your email"
             style={{ width: '80%', padding: 12 }}

@@ -28,7 +28,6 @@ const Create = () => {
     if (!title.trim() || !author.trim() || !description.trim()) return;
     try {
       const response = await createBook({ title, author, description });
-      console.log('response ', response);
 
       setTimeout(() => {
         router.replace('/Books');
