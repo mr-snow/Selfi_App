@@ -18,7 +18,6 @@ import { useState } from 'react';
 import { useUser } from '../../hooks/useUser';
 
 import Toast from 'react-native-toast-message';
-import { toastConfig } from '../../components/customComponents';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -42,7 +41,6 @@ const Login = () => {
       Toast.show({
         type: 'success',
         text1: 'Login successful!',
-        visibilityTime: 2000,
       });
       setEmail('');
       setPassword('');
@@ -66,11 +64,7 @@ const Login = () => {
           Login
         </ThemedText>
 
-        <Toast
-          position="top"
-          style={styles.ToastStyle}
-          config={toastConfig(colorScheme)}
-        />
+       
 
         <ThemedCard style={{ width: '90%', padding: 20, borderRadius: 10 }}>
           <ThemedInput

@@ -19,7 +19,6 @@ import Spacer from '../../components/Spacer';
 import { useState } from 'react';
 
 import { useUser } from '../../hooks/useUser';
-import { toastConfig } from '../../components/customComponents';
 const Register = () => {
   const colorScheme = useColorScheme();
   const [email, setEmail] = useState('');
@@ -52,7 +51,7 @@ const Register = () => {
 
       Toast.show({
         type: 'error',
-        text1: 'Registration failed',
+        text1: 'Register failed',
         text2: error?.message || 'Something went wrong',
       });
     }
@@ -64,11 +63,7 @@ const Register = () => {
         <ThemedText title="true" style={styles.title}>
           Signup
         </ThemedText>
-        <Toast
-          position="top"
-          style={styles.ToastStyle}
-          config={toastConfig(colorScheme)}
-        />
+
         <ThemedCard style={{ width: '90%', padding: 20 }}>
           <ThemedInput
             placeholder="Enter your email"

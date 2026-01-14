@@ -5,7 +5,6 @@ import ThemedCard from '../../components/ThemedCard';
 import ThemedButton from '../../components/ThemedButton';
 import { useUser } from '../../hooks/useUser';
 import Toast from 'react-native-toast-message';
-import { toastConfig } from '../../components/customComponents';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../constants/Color';
@@ -49,8 +48,6 @@ const Profile = () => {
       >
         Profile
       </ThemedText>
-
-      <Toast position="top" config={toastConfig(colorScheme)} />
 
       <ThemedCard style={{ flex: 0 }}>
         <ThemedText margin={10} style={{ fontSize: 14 }}>

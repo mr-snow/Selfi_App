@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 import ThemedView from '../../components/ThemedView';
 import ThemedText from '../../components/ThemedText';
 import ThemedCard from '../../components/ThemedCard';
 import ThemedButton from '../../components/ThemedButton';
+import Toast from 'react-native-toast-message';
 
 const Books = () => {
+  const colorScheme = useColorScheme();
   return (
     <ThemedView style={styles.container} safe={true}>
       <ThemedText
@@ -22,7 +24,14 @@ const Books = () => {
       <ThemedCard>
         <ThemedText margin={10}>Book lists </ThemedText>
 
-        <ThemedButton>
+        <ThemedButton
+          onPress={() => {
+            Toast.show({
+              type: 'success',
+              text1: 'Login successful!',
+            });
+          }}
+        >
           <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>
             Add Books
           </Text>
