@@ -10,61 +10,62 @@ const DashboardLayout = () => {
   const theme = Colors[colorScheme] ?? Colors.light;
 
   return (
-      <UserOnly>
-        <Tabs
-          screenOptions={{
-            headerShown: false,
-            tabBarStyle: {
-              backgroundColor: theme.navBackground,
-              paddingTop: 5,
-              height: 60,
-              marginBottom: 0,
-            },
-            tabBarActiveTintColor: theme.iconColorFocused,
-            tabBarInactiveTintColor: theme.iconColor,
+    <UserOnly>
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: theme.navBackground,
+            paddingTop: 5,
+            height: 60,
+            marginBottom: 0,
+          },
+          tabBarActiveTintColor: theme.iconColorFocused,
+          tabBarInactiveTintColor: theme.iconColor,
+        }}
+      >
+        <Tabs.Screen
+          name="Profile"
+          options={{
+            title: 'Profile',
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? 'person' : 'person-outline'}
+                size={20}
+                color={focused ? theme.iconColorFocused : theme.iconColor}
+              />
+            ),
           }}
-        >
-          <Tabs.Screen
-            name="Profile"
-            options={{
-              title: 'Profile',
-              tabBarIcon: ({ focused }) => (
-                <Ionicons
-                  name={focused ? 'person' : 'person-outline'}
-                  size={20}
-                  color={focused ? theme.iconColorFocused : theme.iconColor}
-                />
-              ),
-            }}
-          />
-          <Tabs.Screen
-            name="Books"
-            options={{
-              title: 'Books',
-              tabBarIcon: ({ focused }) => (
-                <Ionicons
-                  name={focused ? 'bookmark' : 'bookmarks-outline'}
-                  size={20}
-                  color={focused ? theme.iconColorFocused : theme.iconColor}
-                />
-              ),
-            }}
-          />
-          <Tabs.Screen
-            name="Create"
-            options={{
-              title: 'Create',
-              tabBarIcon: ({ focused }) => (
-                <Ionicons
-                  name={focused ? 'create' : 'create-outline'}
-                  size={20}
-                  color={focused ? theme.iconColorFocused : theme.iconColor}
-                />
-              ),
-            }}
-          />
-        </Tabs>
-      </UserOnly>
+        />
+        <Tabs.Screen
+          name="Books"
+          options={{
+            title: 'Books',
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? 'bookmark' : 'bookmarks-outline'}
+                size={20}
+                color={focused ? theme.iconColorFocused : theme.iconColor}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="Create"
+          options={{
+            title: 'Create',
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? 'create' : 'create-outline'}
+                size={20}
+                color={focused ? theme.iconColorFocused : theme.iconColor}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen name="books/[id]" options={{ href: null }} />
+      </Tabs>
+    </UserOnly>
   );
 };
 
