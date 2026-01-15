@@ -2,16 +2,21 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import ThemedView from '../../../components/ThemedView';
 import ThemedText from '../../../components/ThemedText';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import ThemedCard from '../../../components/ThemedCard';
 import { useBook } from '../../../hooks/useBook';
 import ThemedLoader from '../../../components/ThemedLoader';
 import Spacer from '../../../components/Spacer';
+import ThemedButton from '../../../components/ThemedButton';
+import { Colors } from '../../../constants/Color';
+import Toast from 'react-native-toast-message';
+import { SharedObjectType } from 'expo';
 
 const BookDetails = () => {
   const { id } = useLocalSearchParams();
   const [book, setBook] = useState(null);
-  const { getBookById } = useBook();
+  const { getBookById, deleteBook } = useBook();
+  const router = useRouter();
 
   useEffect(() => {
     async function loadBook() {
@@ -27,7 +32,22 @@ const BookDetails = () => {
   if (!book) {
     return <ThemedLoader />;
   }
-  
+
+  const handleDelete = async () => {
+    if (!id) return;
+    await deleteBook(id);
+    setBook(null);
+
+    Toast.show({
+      type: 'success',
+      text1: 'Successfully deleted',
+      visibilityTime: 1000,
+    });
+    setTimeout(() => {
+      router.push('/Books');
+    }, 2000);
+  };
+
   return (
     <ThemedView safe={true}>
       <Spacer />
@@ -44,6 +64,10 @@ const BookDetails = () => {
         </ThemedText>
         <ThemedText style={styles.description}>{book?.description} </ThemedText>
       </ThemedCard>
+
+      <ThemedButton style={styles.delBtn} onPress={handleDelete}>
+        <Text style={{ color: 'white', fontWeight: 800 }}>Delete</Text>
+      </ThemedButton>
     </ThemedView>
   );
 };
@@ -70,5 +94,11 @@ const styles = StyleSheet.create({
     borderColor: '#26d100',
     borderWidth: 0.5,
     padding: 20,
+  },
+  delBtn: {
+    backgroundColor: Colors.warning,
+    width: 100,
+    alignSelf: 'center',
+    marginVertical: 20,
   },
 });

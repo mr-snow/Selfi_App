@@ -71,8 +71,11 @@ export const BookContextProvider = ({ children }) => {
       console.log('book context error', error.message);
     }
   }
-  async function deleteBook() {
+  async function deleteBook(id) {
+    if (!id) return null;
+
     try {
+      await databases.deleteDocument(DatabaseId, CollectionID, id);
     } catch (error) {
       console.log('book context error', error.message);
     }
@@ -88,6 +91,12 @@ export const BookContextProvider = ({ children }) => {
         const { payload, events } = response;
         if (events[0].includes('create')) {
           setBooks(prevBook => [...prevBook, payload]);
+        }
+
+        if (events[0].includes('delete')) {
+          setBooks(prevBook =>
+            prevBook.filter(book => book.$id !== payload.$id)
+          );
         }
       });
     } else {
