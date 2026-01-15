@@ -8,6 +8,7 @@ import Toast from 'react-native-toast-message';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../constants/Color';
+import Spacer from '../../components/Spacer';
 
 const Profile = () => {
   const colorScheme = useColorScheme();
@@ -22,9 +23,8 @@ const Profile = () => {
         text1: 'User Logout',
         visibilityTime: 1000,
       });
-      setTimeout(() => {
-        router.replace('/');
-      }, 2000);
+
+      router.replace('/');
     } catch (error) {
       console.error('Logout error:', error);
       Toast.show({
@@ -37,47 +37,50 @@ const Profile = () => {
 
   return (
     <ThemedView safe={true} style={styles.container}>
-      <ThemedText
-        title="true"
-        style={{
-          fontWeight: 'bold',
-          fontSize: 24,
-          marginVertical: 10,
-          marginLeft: 20,
-        }}
-      >
-        Profile
-      </ThemedText>
+      <Spacer />
+      <View style={styles.profile}>
+        <ThemedText>
+          <Ionicons name="person-circle" size={24}></Ionicons>
+        </ThemedText>
+        <ThemedText style={{ fontSize: 24 }}>Profile</ThemedText>
+      </View>
 
-      <ThemedCard style={{ flex: 0 }}>
-        <ThemedText margin={10} style={{ fontSize: 14 }}>
+      <ThemedCard style={{ flex: 0.5 }}>
+        <ThemedText margin={15} style={{ fontSize: 14 }}>
+          Email :{' '}
           {user?.email ? user.email : <ThemedText>Please Login !</ThemedText>}
         </ThemedText>
-
-        <ThemedButton>
-          <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>
-            Read Books
-          </Text>
-        </ThemedButton>
 
         <ThemedButton
           onPress={handlePress}
           style={{
-            backgroundColor: Colors.warning,
+            backgroundColor: '#f2f2f22c',
             position: 'absolute',
-            top: 5,
-            right: 4,
+            top: 10,
+            right: 10,
           }}
         >
           <Text style={{ color: '#f2f2f2', fontWeight: 'bold' }}>
-            <Ionicons name="log-out-outline" size={20} />
+            <Ionicons name="log-out-outline" size={18} />
           </Text>
         </ThemedButton>
       </ThemedCard>
+      <Spacer />
+      <ThemedText style={{ alignSelf: 'center' }}>
+        Make your profile shine ✨{' '}
+      </ThemedText>
     </ThemedView>
   );
 };
 
 export default Profile;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  profile: {
+    marginVertical: 10,
+    marginLeft: 20,
+    flexDirection: 'row',
+    gap: 5,
+    alignItems: 'center',
+  },
+});

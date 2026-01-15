@@ -59,14 +59,14 @@ const BookDetails = () => {
           written by {book?.author}{' '}
         </ThemedText>
         <Spacer height={10} />
-        <ThemedText style={{ fontWeight: 700, marginVertical: 10 }}>
+        <ThemedText style={{ fontWeight: '700', marginVertical: 10 }}>
           description
         </ThemedText>
         <ThemedText style={styles.description}>{book?.description} </ThemedText>
       </ThemedCard>
 
       <ThemedButton style={styles.delBtn} onPress={handleDelete}>
-        <Text style={{ color: 'white', fontWeight: 800 }}>Delete</Text>
+        <Text style={{ color: 'white', fontWeight: '800' }}>Delete</Text>
       </ThemedButton>
     </ThemedView>
   );
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     alignSelf: 'center',
     marginVertical: 20,
-    fontWeight: 900,
+    fontWeight: '900',
   },
   author: {
     fontSize: 14,

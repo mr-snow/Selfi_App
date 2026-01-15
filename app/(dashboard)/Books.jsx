@@ -36,21 +36,36 @@ const Books = () => {
         Your Reading List
       </ThemedText>
       <Spacer height={20} />
-      <FlatList
-        data={books}
-        keyExtractor={item => item.$id}
-        contentContainerStyle={styles.list}
-        renderItem={({ item }) => (
-          <Pressable onPress={() => router.push(`/books/${item.$id}`)}>
-            <ThemedCard style={styles.card}>
-              <ThemedText style={styles.title}>{item.title}</ThemedText>
-              <ThemedText style={styles.author}>
-                written by {item.author}
-              </ThemedText>
-            </ThemedCard>
-          </Pressable>
-        )}
-      />
+      {books.length > 0 ? (
+        <FlatList
+          data={books}
+          keyExtractor={item => item.$id}
+          contentContainerStyle={styles.list}
+          renderItem={({ item }) => (
+            <Pressable onPress={() => router.push(`/books/${item.$id}`)}>
+              <ThemedCard style={styles.card}>
+                <ThemedText style={styles.title}>{item.title}</ThemedText>
+                <ThemedText style={styles.author}>
+                  written by {item.author}
+                </ThemedText>
+              </ThemedCard>
+            </Pressable>
+          )}
+        />
+      ) : (
+        <ThemedCard
+          style={{
+            width: '90%',
+            marginHorizontal: 10,
+            marginVertical: '5%',
+            alignSelf: 'center',
+          }}
+        >
+          <ThemedText style={{ alignSelf: 'center' }}>
+            No books in your list.{' '}
+          </ThemedText>
+        </ThemedCard>
+      )}
     </ThemedView>
   );
 };
