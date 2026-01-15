@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import ThemedLoader from '../ThemedLoader';
 
-const GusetOnly = ({ children }) => {
+const GuestOnly = ({ children }) => {
   const { user, authChecked } = useUser();
   const router = useRouter();
 
@@ -20,4 +20,4 @@ const GusetOnly = ({ children }) => {
 
   return children;
 };
-export default GusetOnly;
+export default GuestOnly;

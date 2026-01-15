@@ -13,11 +13,11 @@ const Home = () => {
       <ThemedLogo style={styles.image} />
 
       <ThemedText style={styles.title} title={true}>
-        Selfie
+        SelfieBooks
       </ThemedText>
 
       <Spacer alignItems="center" justifyContent="center" height={30}>
-        <ThemedText>Tak a Real Selfie </ThemedText>
+        <ThemedText>Tak a Real Selfie For Growth </ThemedText>
       </Spacer>
       <Spacer height={20} />
       <Link href="/Books" style={styles.link}>
